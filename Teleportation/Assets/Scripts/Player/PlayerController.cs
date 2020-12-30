@@ -5,28 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Vector2 mousePos;
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        Teleporte();
+        if(Input.GetMouseButtonDown(0))
+            Teleportation();
     }
-    private void Teleporte()
+    public void Teleportation () 
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            transform.position = MousePosition();
-        }
-
+        transform.position = GetMousePosition ();
     }
 
-    Vector2 MousePosition()
-    {
+    public Vector3 GetMousePosition () {
         mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        mousePos = Camera.main.ScreenToWorldPoint (mousePos);
 
         return mousePos;
     }
